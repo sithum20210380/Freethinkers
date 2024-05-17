@@ -41,6 +41,9 @@ const AddUser = ({isModalOpen, closeModal}) => {
             title="Add User"
             className='add-user-modal'
             visible={isModalOpen}
+            onCancel={() => {
+                closeModal();
+            }}
         >
            <div className='signup-form-container'>
                 <div className='signup-right-container'>
