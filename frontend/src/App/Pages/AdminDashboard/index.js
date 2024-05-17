@@ -33,7 +33,8 @@ const itemRender = (_, type, originalElement) => {
       mobile: "1234567890",
       email: "nsandasika123@gmail.com",
       status: "User",
-      action:<img src={edit} alt="edit" />,
+      action:<div className="edit-delete"><img src={edit} alt="edit" /><img src={trash} alt="edit" />
+      </div>,
     },
     {
       dtpcode: "2",
@@ -43,7 +44,8 @@ const itemRender = (_, type, originalElement) => {
       mobile: "1234567890",
       email: "nsandasika123@gmail.com",
       status: "User",
-      action:<img src={edit} alt="edit" />,
+      action:<div className="edit-delete"><img src={edit} alt="edit" /><img src={trash} alt="edit" />
+      </div>,
     },
     {
       dtpcode: "3",
@@ -53,7 +55,8 @@ const itemRender = (_, type, originalElement) => {
       mobile: "1234567890",
       email: "nsandasika123@gmail.com",
       status: "User",
-      action:<img src={edit} alt="edit" />,
+      action:<div className="edit-delete"><img src={edit} alt="edit" /><img src={trash} alt="edit" />
+      </div>,
     },
   ];
 
@@ -104,7 +107,8 @@ const itemRender = (_, type, originalElement) => {
       mobile: "1234567890",
       email: "nsandasika123@gmail.com",
       status: "User",
-      action:<img src={edit} alt="edit" />,
+      action:<div className="edit-delete"><img src={edit} alt="edit" /><img src={trash} alt="edit" />
+      </div>,
     },
     {
       dtpcode: "2",
@@ -114,7 +118,8 @@ const itemRender = (_, type, originalElement) => {
       mobile: "1234567890",
       email: "nsandasika123@gmail.com",
       status: "User",
-      action:<img src={edit} alt="edit" />,
+      action:<div className="edit-delete"><img src={edit} alt="edit" /><img src={trash} alt="edit" />
+      </div>,
     },
     {
       dtpcode: "3",
@@ -124,7 +129,8 @@ const itemRender = (_, type, originalElement) => {
       mobile: "1234567890",
       email: "nsandasika123@gmail.com",
       status: "User",
-      action:<img src={edit} alt="edit" />,
+      action:<div className="edit-delete"><img src={edit} alt="edit" /><img src={trash} alt="edit" />
+      </div>,
     },
   ];
 
