@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import AdminDashboard from '../Pages/AdminDashboard';
+import AdminDashboard from '../Pages/adminDashboard/index';
 
 const AppRoutes = () => {
   return (
