@@ -1,11 +1,13 @@
-import React from "react";
-import Login from "./App/Pages/Login";
-import AdminDashboard from "./App/Pages/AdminDashboard";
+import './App.css';
+import React from 'react';
+import AppRoutes from './App/routes';
+import Navbar from './App/components/navbar';
+
 function App() {
   return (
     <div className="App">
-      {/* <Login/> */}
-      <AdminDashboard/>
+      <Navbar></Navbar>
+      <AppRoutes></AppRoutes>
     </div>
   );
 }
