@@ -1,0 +1,123 @@
+.admin-dashboard-main-container{
+    display: flex;
+    flex-direction: column;  
+    margin-top: 57px;
+    margin-inline: 102px;
+    gap: 100px;
+    padding-bottom: 100px;
+}
+.admin-system-info{
+    display: flex;
+    flex-direction: column;
+    gap: 66px;
+}
+.admin-dashboard-main-heading{
+    // font-family: Roboto;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 56.25px;
+    text-align: left;
+}
+.admin-dashboard-sys-info-cont{
+    display: flex;
+    justify-content: center;
+    padding-block: 57px;
+    padding-inline: 82px;
+    gap: 78px;
+}
+.admin-dashboard-tot-users{
+    display: flex;
+    background-color: #FFFFFF;
+    color: #000000;
+    max-width: 501px;
+    width: 100%;
+   align-items: center;
+   justify-content: center;
+//    font-family: Work Sans;
+font-size: 36px;
+font-weight: 700;
+line-height: 42.23px;
+text-align: left;
+padding-block: 108px;
+border-radius: 30px;
+}
+.admin-dashboard-tot-payments{
+    display: flex;
+    background-color: #FFFFFF;
+    color: #000000;
+    max-width: 501px;
+    width: 100%;
+   align-items: center;
+   justify-content: center;
+//    font-family: Work Sans;
+font-size: 36px;
+font-weight: 700;
+line-height: 42.23px;
+text-align: left;
+padding-block: 108px;
+border-radius: 30px;
+}
+.admin-user-info-main-cont{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.admin-user-info-heading-cont{
+    display: flex;
+    gap: 24px;
+}
+.admin-user-info-heading-cont{
+    display: flex;
+    justify-content: space-between;
+
+}
+.admin-user-info-heading{
+font-size: 36px;
+font-weight: 700;
+line-height: 42.23px;
+text-align: left;
+
+}
+.ant-btn-primary{
+background-color: #000000;
+color: #FFFFFF;
+align-items: center;
+font-size: 22px;
+font-weight: 700;
+line-height: 14.63px;
+text-align: left;
+height: 50px;
+border-radius: 8px;
+
+}
+.admin-user-info-button{
+    display: flex;
+    align-items: center;
+}
+.ant-select-show-search {
+ display: none;
+}
+.pag-admin{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin sp-layout {
+    @media screen and (max-width: 750px) {
+      @content;
+    }
+  }
+  
+  
+  @function random_range($min, $max) {
+    $rand: random();
+    $random_range: $min + floor($rand * (($max - $min) + 1));
+    @return $random_range;
+  }
+
+  body{
+    background-color: #000000;
+    color: #FFFFFF;
+  }
+  

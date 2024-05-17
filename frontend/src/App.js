@@ -1,9 +1,13 @@
-import React from "react";
-import SignupPage from "./App/Pages/Signup";
+import './App.css';
+import React from 'react';
+import AppRoutes from './App/routes';
+import Navbar from './App/components/navbar';
+
 function App() {
   return (
     <div className="App">
-      <SignupPage/>
+      <Navbar></Navbar>
+      <AppRoutes></AppRoutes>
     </div>
   );
 }
