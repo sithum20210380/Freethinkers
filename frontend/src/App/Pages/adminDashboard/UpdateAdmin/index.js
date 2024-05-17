@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from "axios";
 
-import { Button, Checkbox } from 'antd';
+import { Button, Checkbox, Modal } from 'antd';
 
 import './style.scss'
 
-const SignupPage = () => {
+const UpdateAdmin = ({isModalOpen, closeModal}) => {
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
     const [email, setEmail] = useState();
@@ -36,12 +36,15 @@ const SignupPage = () => {
 
     return (
         <div className='signup-container'>
-            <div className='signup-form-container'>
+        <Modal
+            title="Update User"
+            className='add-user-modal'
+            visible={isModalOpen}
+        >
+           <div className='signup-form-container'>
                 <div className='signup-right-container'>
                     <form className='signup-form-container' >
                         <div className='signup-form'>
-                            <h2 className='signup-text'>Sign Up</h2>
-                            <h2 className='signup-bottom-text'>Already have an account?<span>Login</span></h2>
                             <div className='name-container'>
                                 <span>
                                     <p>First Name</p>
@@ -131,22 +134,13 @@ const SignupPage = () => {
                                 required
                             /> 
                             </div>
-                            
-                            <p>
-                                <Checkbox className='policy-agreement-check-box'></Checkbox>
-                                I agree to all the <span className="policies">Term, Privacy Policy and Fees </span>
-                            </p>
-                            {error && <div className='error-msg'>{error}</div>}
-                            <Button type="secondary" className='user-signup-btn' >
-                                Sign up
-                            </Button>
                         </div>
                     </form>
                 </div>
             </div>
-
-        </div>
+        </Modal>
+    </div>
     )
 }
 
-export default SignupPage;
+export default UpdateAdmin;

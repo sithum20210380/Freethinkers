@@ -11,29 +11,6 @@ const Login = () => {
     const [error, setError] = useState("");
 
     // function to handle submit
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     try {
-    //         const url = "http://localhost:3001/login";
-    //         const { data: res } = await axios.post(url, data);
-    //         console.log(data);
-    //         if (res === "Normal user login successful") {
-    //             message.success('Login successful');
-    //         } else if (res === "Veterinarian login successful") {
-    //             message.success('Login successful');
-    //         } else {
-    //             setError(res);
-    //         }
-    //     } catch (error) {
-    //         if (
-    //             error.response &&
-    //             error.response.status >= 400 &&
-    //             error.response.status <= 500
-    //         ) {
-    //             setError(error.response.data.message);
-    //         }
-    //     }
-    // };
 
 
     return (

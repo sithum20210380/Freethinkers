@@ -1,67 +1,68 @@
-var express = require('express');
-const sql = require('mssql');
-const bcrypt = require('bcryptjs');
-const DB_CONFIG = require('./database');
-const { v4: uuidv4 } = require('uuid');
-const joi = require('joi');
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const mongoose = require('mongoose');
+const FormDataModel = require('./models/usermodel');
+const bcrypt = require('bcrypt');
 
-var app = express();
+const app = express();
 
-app.get('/', function (req, res) {
-    res.send('Hello World!');
+// Middleware
+app.use(cors());
+app.use(bodyParser.json());
+
+const PORT = process.env.PORT || 3001;
+// Connect to MongoDB
+mongoose.connect('mongodb+srv://freethinkers:freethinkers@cluster0.15vaxf6.mongodb.net/');
+
+app.post('/register', (req, res) => {
+  // To post / insert data into database
+  const { email, password } = req.body;
+  FormDataModel.findOne({ email: email })
+      .then(user => {
+          if (user) {
+              res.json("Already registered")
+          }
+          else {
+              FormDataModel.create(req.body)
+                  .then(users => res.json(users))
+                  .catch(err => res.json(err))
+          }
+      })
+
+})
+
+// Endpoint for login
+app.post('/login', async (req, res) => {
+  const { userName, password, DTPCode } = req.body;
+
+  try {
+      const user = await FormDataModel.findOne({ userName: userName, DTPCode: DTPCode });
+
+      if (!user) {
+          return res.status(404).json({ message: 'No records found!' });
+      }
+
+      const isPasswordValid = await bcrypt.compare(password, user.password);
+
+      if (!isPasswordValid) {
+          return res.status(401).json({ message: 'Wrong password' });
+      }
+
+      // Check user role and send appropriate response
+      if (user.role === 'Admin') {
+          res.json("Admin login successful");
+      } else if (user.role === 'user') {
+          res.json("User login successful");
+      } else {
+          res.json("Unknown role");
+      }
+  } catch (error) {
+      res.status(500).json({ message: 'Server error' });
+  }
 });
 
-app.post('/addUser', async function (req, res) {
-    const dataString = req.body;
-    const data = JSON.parse(dataString);
 
-
-    console.log(dataString);
-
-    // try {
-    //     const schema = joi.object({
-    //         fNmae: joi.string().required(),
-    //         lName: joi.string().required(),
-    //         email: joi.string().email().required(),
-    //         password: joi.string().required(),
-    //         userName: joi.string().required(),
-    //         mobileNo: joi.string().required(),
-    //     });
-
-    //     const { error } = schema.validate(data);
-
-    //     if (error) {
-    //         res
-    //             .status(400)
-    //             .send(error.details[0].message);
-    //         return;
-    //     }
-
-
-    //     const userId = uuidv4();
-    //     const salt = await bcrypt.genSalt(10);
-    //     const hashedPassword = await bcrypt.hash(data.password, salt);
-
-    //     const request = await pool.request()
-    //         .input('id', sql.VarChar, userId)
-    //         .input('fName', sql.VarChar, data.fName)
-    //         .input('lName', sql.VarChar, data.lName)
-    //         .input('email', sql.VarChar, data.email)
-    //         .input('password', sql.VarChar, hashedPassword)
-    //         .input('userName', sql.VarChar, data.userName)
-    //         .input('mobileNo', sql.VarChar, data.mobileNo)
-    //         .input('role', sql.DateTime, 'user')
-    //         .input('adminType', sql.DateTime, 'user')
-    //         .query('INSERT INTO [dbo].[users] (id, fName, lName, email, password, userName, mobileNo, role, adminType) VALUES (@id, @fName, @lName, @email, @password, @userName, @mobileNo, @role, @adminType)');
-
-    //     res.status(200).send('User added successfully');
-
-    // } catch (error) {
-    //     console.log(error);
-    //     res.status(500).send('Internal Server Error');
-    // }
-});
-
-app.listen(6000, function () {
-    console.log('Example app listening on port 6000!');
+app.listen(PORT, () => {
+    console.log(`Server Listening on ${PORT}`);
 });
